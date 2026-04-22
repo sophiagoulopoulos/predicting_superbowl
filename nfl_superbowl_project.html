@@ -297,7 +297,7 @@ html
         The Super Bowl is the most-watched sporting event in America, yet post-game debate rarely rises above narrative - "it was the defense," "the quarterback willed them to victory," "momentum shifted." These explanations feel satisfying, but are they supported by data?
       </p>
       <p style="color: var(--text-muted); line-height: 1.8; font-size: 0.95rem;">
-        With over two decades of detailed NFL team statistics publicly available, we can move beyond anecdote and toward evidence. This project systematically analyzes which measurable regular-season metrics - offensive production, defensive efficiency, turnover margin, scoring differential - most strongly predict Super Bowl success. Our goal is to combine statistical rigor with thoughtful visualizations to tell a data-driven story about what it takes to win a championship.
+        With over two decades of detailed NFL team statistics publicly available, we can move beyond anecdote and toward evidence. This project systematically analyzes which measurable regular-season metrics most strongly predict Super Bowl success — with a particular focus on passing yards, yards per play, and turnover margin, which our analysis shows are far more predictive than surface-level outcomes like win percentage. Our goal is to combine statistical rigor with thoughtful visualizations to tell a data-driven story about what it actually takes to win a championship.
       </p>
     </div>
   </div>
@@ -352,7 +352,7 @@ html
       <div class="viz-header">
         <div class="section-label">Visualization 1 · D3.js · Interactive</div>
         <div class="viz-title">Offensive vs. Defensive Balance</div>
-        <div class="viz-subtitle">Points scored (offense) vs. points allowed (defense) for every team-season 2003-2023. The ideal champion sits in the upper-left: scoring a lot while allowing very little.</div>
+        <div class="viz-subtitle">Points scored (offense) vs. points allowed (defense) for every team-season 2003–2023. Champions tend to cluster in the upper-left — high scoring, stingy defense — but notice how passing efficiency underlies both axes: teams that throw well score more and, by controlling the ball, allow fewer points.</div>
       </div>
       <div class="viz-instructions">
         <span>&#x279C; Hover</span> over any dot for team details &nbsp;|&nbsp; <span>&#x279C; Click filters</span> below to show/hide groups &nbsp;|&nbsp; <span>&#x279C; Gold star</span> = Super Bowl winner
@@ -373,7 +373,7 @@ html
         <div class="tooltip-svg" id="scatter-tip"></div>
       </div>
       <div class="viz-takeaway">
-        <strong>Takeaway:</strong> Super Bowl winners consistently occupy the top-left quadrant - they score more than most teams while simultaneously holding opponents to fewer points. This confirms that point differential, rather than offense or defense alone, is the strongest visual predictor of championship-caliber teams. Interestingly, several finalists are indistinguishable from non-winners on these axes, suggesting other factors tip the balance.
+        <strong>Takeaway:</strong> Super Bowl winners consistently occupy the upper-left quadrant — scoring more while allowing fewer points. The gap is driven primarily by passing efficiency: champions average 410 more passing yards per season than non-winners, translating directly into scoring output. Turnovers amplify this further — every turnover is a possession lost, and lost possessions show up as points allowed. Win percentage, by contrast, is largely a byproduct of these underlying factors rather than a predictor in its own right.
       </div>
     </div>
 
@@ -382,14 +382,14 @@ html
       <div class="viz-header">
         <div class="section-label">Visualization 2 · Altair (Vega-Lite) · Interactive</div>
         <div class="viz-title">Winners vs. The Field: Key Metric Comparisons</div>
-        <div class="viz-subtitle">Average regular-season statistics for Super Bowl winners compared to all non-winners, built with Altair (Vega-Lite). Use the dropdown inside the chart to switch between metric categories.</div>
+        <div class="viz-subtitle">Average regular-season statistics for Super Bowl winners vs. all non-winners, built with Altair (Vega-Lite). Pay particular attention to the Offense and Efficiency categories — passing yards and yards per play show the sharpest separation between champions and the field.</div>
       </div>
       <div class="viz-instructions">
         <span>&#x279C; Use the Category dropdown</span> inside the chart to switch between Offense, Defense, Efficiency, and Overall &nbsp;|&nbsp; <span>&#x279C; Hover</span> any bar for exact values
       </div>
       <div id="altair-bar" style="width:100%; min-height:340px;"></div>
       <div class="viz-takeaway">
-        <strong>Takeaway:</strong> Super Bowl winners dramatically outscore opponents (+115.8 avg point differential vs. -3.7 for non-winners). Offensively, they average 65 more points and 410 more passing yards per season. Defensively, they allow 54 fewer points. Turnovers are slightly lower for winners (21.9 vs. 24.8), suggesting ball security - though modest in difference - adds up over a season. Rushing yards show almost no difference, reinforcing that passing efficiency drives modern NFL success.
+        <strong>Takeaway:</strong> The starkest separators are in the passing game and efficiency metrics. Champions average 410 more passing yards and nearly 9 more passing TDs per season — a decisive edge that compounds into the +115.8 point differential advantage. Turnovers tell the second-biggest story: winners give the ball away 3 fewer times per season (21.9 vs. 24.8), a difference that directly swings field position and scoring. Rushing yards are essentially identical between the two groups, debunking the "run to win" narrative. Win percentage, while naturally higher for champions, is an output of these technical factors — not a useful predictor on its own.
       </div>
     </div>
 
@@ -398,11 +398,11 @@ html
       <div class="viz-header">
         <div class="section-label">Visualization 3 · Static · Feature Analysis</div>
         <div class="viz-title">Feature Importance: What Predicts a Championship?</div>
-        <div class="viz-subtitle">Correlation-based importance scores for each metric relative to Super Bowl winning. Higher values indicate stronger association with championship seasons. Values represent absolute Pearson correlation with the sb_winner binary variable.</div>
+        <div class="viz-subtitle">Pearson correlation of each metric with Super Bowl winning — higher bars mean stronger association with a championship season. Passing yards, yards per play, and turnover rate rank among the top predictors; win percentage, despite appearing strong, largely reflects these underlying technical metrics.</div>
       </div>
       <div id="feature-importance"></div>
       <div class="viz-takeaway">
-        <strong>Takeaway:</strong> Point differential and margin of victory are the strongest predictors of Super Bowl success, followed by wins and scoring. This reinforces a consistent theme: it's not just how much you score, but how much you outscore your opponent. Turnover percentage shows a meaningful negative correlation - teams that give the ball away more tend not to win championships. Rushing yards rank near the bottom, challenging the conventional wisdom that running the ball is key to playoff success.
+        <strong>Takeaway:</strong> Point differential and margin of victory top the chart, but these are composite outcomes — they are built from the metrics below them. Among actionable technical predictors, passing yards, yards per play, and passing TDs rank highest, confirming that air-attack efficiency is the engine of championship offenses. Turnover percentage shows a meaningful negative correlation: teams that give the ball away more simply do not win championships. Win percentage correlates strongly but is circular — it rises because a team passes well and protects the ball, not the other way around. Rush yards sit near the bottom, consistent with the modern pass-first NFL.
       </div>
     </div>
 
@@ -420,7 +420,7 @@ html
         <svg id="heatmap-svg"></svg>
       </div>
       <div class="viz-takeaway">
-        <strong>Takeaway:</strong> Points scored and total yards are tightly correlated, as expected. More revealing is that points allowed (defense) is negatively correlated with wins - strong defense drives victories. Turnovers correlate negatively with wins, confirming ball security matters. Pass yards and pass TDs cluster together, suggesting passing game effectiveness is holistic. The near-zero correlation between rush yards and wins challenges the "run to win" philosophy in the modern NFL.
+        <strong>Takeaway:</strong> Pass yards and pass TDs cluster tightly together, confirming that the passing game is a cohesive system — teams that throw for yards also score through the air. The strong negative correlation between turnovers and wins is one of the clearest signals in the data: ball security isn't a soft intangible, it's a measurable competitive advantage. Points scored and total yards are tightly linked as expected, while the near-zero correlation between rush yards and wins reinforces that volume rushing is not a championship formula in the modern NFL.
       </div>
     </div>
 
@@ -429,7 +429,7 @@ html
       <div class="viz-header">
         <div class="section-label">Visualization 5 · D3.js · Interactive</div>
         <div class="viz-title">Team Performance Over Time</div>
-        <div class="viz-subtitle">Track any team's point differential across all 21 seasons (2003-2023). Positive values indicate dominant seasons; gold markers denote Super Bowl victories.</div>
+        <div class="viz-subtitle">Track any team's point differential across all 21 seasons (2003–2023). Positive values signal dominant seasons; gold markers denote Super Bowl victories. Hover a dot to see the team's passing yards for that season — notice how championship peaks align with strong passing years.</div>
       </div>
       <div class="viz-instructions">
         <span>&#x279C; Select a team</span> from the dropdown to view their historical trajectory &nbsp;|&nbsp; <span>&#9733; Gold marker</span> = Super Bowl win
@@ -470,12 +470,12 @@ html
         <p>No single metric predicts Super Bowl success more reliably than point differential. Champions averaged +115.8 points per season versus -3.7 for non-winners. This reflects both elite offense and elite defense working in concert - neither alone is sufficient.</p>
       </div>
       <div class="conclusion-card">
-        <h3>2. Passing, Not Rushing, Wins</h3>
-        <p>Despite persistent narratives about "establishing the run," rushing yards show almost zero correlation with Super Bowl success. Passing yards, passing touchdowns, and yards per play are the offensive metrics that differentiate champions, consistent with the modern pass-first NFL.</p>
+        <h3>2. Passing Yards Drive Championships</h3>
+        <p>Champions average 410 more passing yards and nearly 9 more passing TDs per season than non-winners. Yards per play — the cleanest measure of offensive efficiency — shows the widest gap of any single metric. Rushing yards, by contrast, are nearly identical across both groups, directly contradicting the "establish the run" narrative.</p>
       </div>
       <div class="conclusion-card">
-        <h3>3. Ball Security Matters</h3>
-        <p>Super Bowl winners average about 3 fewer turnovers per season (21.9 vs. 24.8). While modest, this compounds across 16-17 games. Turnover percentage shows a meaningful negative correlation with winning - protecting the ball is as important as generating it on offense.</p>
+        <h3>3. Turnovers Are a Technical Predictor</h3>
+        <p>Super Bowl winners average 3 fewer turnovers per season (21.9 vs. 24.8), and turnover percentage shows a consistent negative correlation with winning across all 21 seasons. Unlike win percentage — which is a result — turnover rate is a cause: each giveaway is a lost possession that directly suppresses scoring and inflates points allowed.</p>
       </div>
     </div>
     <div style="margin-top: 2.5rem; padding: 1.5rem; background: var(--dark3); border: 1px solid var(--border);">
