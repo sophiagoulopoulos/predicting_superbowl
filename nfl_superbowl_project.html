@@ -183,18 +183,20 @@ html
   .grid line { stroke: rgba(255,255,255,0.04); }
   .tooltip-svg {
     position: absolute;
-    background: var(--dark4);
-    border: 1px solid var(--border);
-    padding: 0.6rem 0.9rem;
-    font-size: 0.78rem;
+    background: #1a1a26;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    padding: 0.65rem 1rem;
+    font-size: 0.84rem;
     pointer-events: none;
     display: none;
     z-index: 10;
-    max-width: 200px;
+    max-width: 220px;
     font-family: 'DM Sans', sans-serif;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.6);
   }
-  .tooltip-svg .t-team { font-weight: 600; color: var(--gold); margin-bottom: 2px; }
-  .tooltip-svg .t-row { color: var(--text-muted); }
+  .tooltip-svg .t-team { font-weight: 700; color: var(--gold); margin-bottom: 4px; font-size: 0.88rem; }
+  .tooltip-svg .t-row { color: var(--text); line-height: 1.6; }
   .legend { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
   .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: var(--text-muted); }
   .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
